@@ -5,7 +5,7 @@ import java.util.List;
 
 public class TestsRunner {
 
-    public static void runTests(Class<?> c) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException, InstantiationException {
+    public static void runTests(Class<?> c) throws ReflectiveOperationException {
 
         TestClassMethods testClassMethods = new TestClassMethods();
 
@@ -66,7 +66,7 @@ public class TestsRunner {
         }
     }
 
-    public static void main(String[] args) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException, InstantiationException {
+    public static void main(String[] args) throws ReflectiveOperationException {
         runTests(SomeTestClass.class);
     }
 }

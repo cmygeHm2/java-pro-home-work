@@ -4,12 +4,12 @@ import java.lang.reflect.Modifier;
 import java.util.*;
 
 public class TestClassMethods {
-    SortedMap<Integer, List<Method>> priorityMap = new TreeMap<>(Comparator.reverseOrder());
-    Method beforeSuite = null;
-    Method afterSuite = null;
-    List<Method> beforeTestMethods = new ArrayList<>();
-    List<Method> afterTestMethods = new ArrayList<>();
-    Map<Method, CsvSourceArgument> csvSourceMethods = new HashMap<>();
+    private SortedMap<Integer, List<Method>> priorityMap = new TreeMap<>(Comparator.reverseOrder());
+    private Method beforeSuite = null;
+    private Method afterSuite = null;
+    private final List<Method> beforeTestMethods = new ArrayList<>();
+    private final List<Method> afterTestMethods = new ArrayList<>();
+    private final Map<Method, CsvSourceArgument> csvSourceMethods = new HashMap<>();
 
     public void initBeforeSuite(Method method, Annotation annotation) {
         if (!Modifier.isStatic(method.getModifiers())) {
