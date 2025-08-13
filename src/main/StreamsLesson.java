@@ -109,11 +109,9 @@ public class StreamsLesson {
      */
     private void task5() {
         Stream.of("Найдите", "в", "списке", "этоСамоеДлинное", "слов", "самое", "длинное")
-                .collect(Collectors.toMap(Function.identity(), String::length))
-                .entrySet()
-                .stream()
-                .max(Map.Entry.comparingByValue())
-                .map(Map.Entry::getKey)
+                .sorted(Comparator.reverseOrder())
+                .limit(1)
+                .findFirst()
                 .ifPresent(System.out::println);
     }
 
@@ -134,11 +132,8 @@ public class StreamsLesson {
      */
     private void task7() {
         Stream.of("книг", "а", "в", "ббб", "aaa", "слов", "зззз", "в", "слов", "дддд", "длинное", "слов", "самое")
-                .collect(Collectors.toMap(Function.identity(), String::length, (a, b) -> a))
-                .entrySet()
-                .stream()
-                .sorted(Map.Entry.<String, Integer>comparingByValue().thenComparing(Map.Entry.comparingByKey()))
-                .forEach(entry -> System.out.println(entry.getKey() + " - " + entry.getValue()));
+                .sorted(Comparator.comparingInt(String::length).thenComparing(Function.identity()))
+                .forEach(System.out::println);
     }
 
     /**
