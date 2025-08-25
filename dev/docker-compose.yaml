@@ -1,0 +1,17 @@
+version: '3.1'
+services:
+  cmygehm-homework-pg:
+    container_name: cmygehm-homework-pg
+    image: postgres:15
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/script.sql
+      - cmygehm_pg_volume:/var/lib/postgresql/data
+    ports:
+      - ${POSTGRES_PORT:-5435}:5432
+
+volumes:
+  cmygehm_pg_volume:
