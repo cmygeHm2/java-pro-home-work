@@ -1,9 +1,11 @@
-package main;
+package hw.app;
 
+import hw.user.User;
+import hw.user.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan
+@ComponentScan({"hw.user", "hw.config"})
 public class SpringApp {
     public static void main(String[] args) {
         var context = new AnnotationConfigApplicationContext(SpringApp.class);
@@ -23,8 +25,11 @@ public class SpringApp {
         userService.delete(alex.getId());
         System.out.println(userService.getAll());
 
-        User notFoundUser = userService.getById(alex.getId());
-        System.out.println(notFoundUser);
+        try {
+            userService.getById(alex.getId());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 }

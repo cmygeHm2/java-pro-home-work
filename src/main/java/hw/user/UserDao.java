@@ -1,5 +1,6 @@
-package main;
+package hw.user;
 
+import hw.exception.RecordNotFoundException;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
@@ -34,7 +35,7 @@ public class UserDao {
         } catch (SQLException e) {
             throw new RuntimeException("Error creating user", e);
         }
-        return null;
+        throw new RecordNotFoundException();
     }
 
     public User getUserById(Long id) {
@@ -56,7 +57,7 @@ public class UserDao {
             throw new RuntimeException("Error getting user by id", e);
         }
 
-        return null;
+        throw new RecordNotFoundException();
     }
 
     public List<User> getAll() {

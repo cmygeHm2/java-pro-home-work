@@ -1,4 +1,4 @@
-package main;
+package hw.user;
 
 public class User {
     private final Long id;

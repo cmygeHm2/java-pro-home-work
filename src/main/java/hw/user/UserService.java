@@ -1,4 +1,4 @@
-package main;
+package hw.user;
 
 import org.springframework.stereotype.Component;
 
