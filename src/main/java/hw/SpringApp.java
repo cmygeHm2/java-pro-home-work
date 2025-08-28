@@ -1,11 +1,11 @@
-package hw.app;
+package hw;
 
 import hw.user.User;
 import hw.user.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan({"hw.user", "hw.config"})
+@ComponentScan
 public class SpringApp {
     public static void main(String[] args) {
         var context = new AnnotationConfigApplicationContext(SpringApp.class);
