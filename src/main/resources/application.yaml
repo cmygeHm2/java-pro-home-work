@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5436/cmygehm_db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties.hibernate.default_schema: homework_5
+    show-sql: true
+    hibernate.ddl-auto: none
+    open-in-view: false
+  flyway:
+    url: jdbc:postgresql://localhost:5436/cmygehm_db
+    user: postgres
+    password: postgres
+    enabled: true
+    locations: classpath:db/migration
+    schemas: homework_5
+    baseline-on-migrate: true
+
+logging.level:
+  org.flywaydb: DEBUG

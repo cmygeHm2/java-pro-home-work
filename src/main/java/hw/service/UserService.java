@@ -1,5 +1,6 @@
 package hw.service;
 
+import hw.dto.UserDto;
 import hw.entity.User;
 import hw.exception.RecordNotFoundException;
 import hw.repository.UserRepository;
@@ -19,8 +20,10 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User getById(Long id) {
-        return userRepository.findById(id).orElseThrow(RecordNotFoundException::new);
+    public UserDto getById(Long id) {
+        return userRepository.findById(id)
+                .map(u -> new UserDto(u.getId(), u.getUsername()))
+                .orElseThrow(RecordNotFoundException::new);
     }
 
     public List<User> getAll() {
@@ -39,6 +42,6 @@ public class UserService {
     }
 
     public void deleteAll() {
-        userRepository.deleteAll();;
+        userRepository.deleteAll();
     }
 }
