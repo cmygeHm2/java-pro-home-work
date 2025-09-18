@@ -1,0 +1,59 @@
+
+### 200 ok
+GET http://localhost:8081/api/payments/product/1
+
+### 404
+GET http://localhost:8081/api/payments/product/10
+
+### 404
+POST http://localhost:8081/api/payments/product/pay
+Content-Type: application/json
+
+{
+  "productId": 100,
+  "sum": 400.20
+}
+
+
+### 400 bad request (invalid body)
+POST http://localhost:8081/api/payments/product/pay
+Content-Type: application/json
+
+{
+  "sum": 11
+}
+
+### 400 bad request (invalid body)
+POST http://localhost:8081/api/payments/product/pay
+Content-Type: application/json
+
+{
+  "productId": 1,
+  "sum": -11
+}
+
+### 400 bad request (invalid body)
+POST http://localhost:8081/api/payments/product/pay
+Content-Type: application/json
+
+{
+  "productId": 1
+}
+
+### 402 payment required (not enought money)
+POST http://localhost:8081/api/payments/product/pay
+Content-Type: application/json
+
+{
+  "productId": 1,
+  "sum": 400000.20
+}
+
+### 200
+POST http://localhost:8081/api/payments/product/pay
+Content-Type: application/json
+
+{
+  "productId": 1,
+  "sum": 4
+}
