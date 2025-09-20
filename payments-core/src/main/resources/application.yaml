@@ -1,0 +1,11 @@
+server:
+  context-path: /api/payments
+  port: 8081
+
+integrations:
+  clients:
+    products-client:
+      url: "http://localhost:8080/api"
+      connect-timeout: 1s
+      read-timeout: 3s
+
